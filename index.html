@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+    <style>
+      /* include the font here using @font-face */
+      @font-face {
+        font-family: "futura"; /* this value can be anything you wish - it gets used in the class definition below */
+        src: url("./futuramdbt.ttf"); /* add the file path to your font here */
+      }
+
+      /* define a class and add the new font */
+      #customFont {
+        font-family: futura; /* property value must match value in @font-face*/
+        text-align: center;
+        letter-spacing: 0.2rem;
+      }
+      .custom {
+        font-family: futura;
+      }
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="customFont">∆JIM</h1>
+    <p class="custom center">BANGERS - ONLY</p>
+    <div id="embed-iframe"></div>
+
+    <script
+      src="https://open.spotify.com/embed-podcast/iframe-api/v1"
+      async
+    ></script>
+    <script>
+      window.onSpotifyIframeApiReady = (IFrameAPI) => {
+        let element = document.getElementById("embed-iframe");
+        let options = {
+          height: "500rem",
+          uri: "https://open.spotify.com/playlist/5jK4pMlnT3JfkgSpK631ZZ?si=56xeUFIzQv-dGpyfv5YT-A&utm_source=copy-link",
+          //uri: 'https://open.spotify.com/playlist/0R9qVROzA7PggjCQGbq21K?si=79e09e4ded1f40b0'
+        };
+        let callback = (EmbedController) => {};
+        IFrameAPI.createController(element, options, callback);
+      };
+    </script>
+  </body>
+</html>
